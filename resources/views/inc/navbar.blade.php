@@ -22,10 +22,19 @@
             <li class="nav-item">
               <a class="nav-link" href="/posts">Posts</a>
             </li>
+            <li class="nav-item active">
+                <form action="{{route('search')}}" method="GET" class="search-form">
+                <i class="fa fa-search search-icon"></i>
+                <input type="text" name="search" class="search-box" placeholder="Zoek op naam of email">
+                </form>
+            </li>
           </ul>
 
           <!-- Right Side Of Navbar -->
           <ul class="navbar-nav ml-auto">
+
+
+
               <!-- Authentication Links -->
               @guest
                   <li class="nav-item">
@@ -37,6 +46,9 @@
                       @endif
                   </li>
               @else
+
+
+
                   <li class="nav-item dropdown">
                       <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                           {{ Auth::user()->name }} <span class="caret"></span>
@@ -55,6 +67,7 @@
                           </form>
                       </div>
                   </li>
+                @endelse
               @endguest
           </ul>
       </div>

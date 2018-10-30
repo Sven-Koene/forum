@@ -2,13 +2,14 @@
 
 @section('content')
 
-
 <form action="{{route('search')}}" method="GET" class="search-form">
     <i class="fa fa-search search-icon"></i>
     <input type="text" name="search" class="search-box" placeholder="Zoek op naam of email">
 </form>
 
-    <h1>Posts</h1>
+<div class="search-container">
+    <h1>resultaten</h1>
+
     @if(count($posts) > 0)
         @foreach($posts as $post)
             <div class="well">
@@ -23,8 +24,8 @@
                 </div>
             </div>
         @endforeach
-        {{$posts->links()}}
     @else
         <p>Geen posts gevonden</p>
     @endif
+</div>
 @endsection

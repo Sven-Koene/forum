@@ -19,3 +19,6 @@ Route::resource('posts', 'PostsController');
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
+
+Route::get('/search', 'PostsController@search')->name('search');
+// Route::get('/posts/search', 'PostsController@search')->name('search');

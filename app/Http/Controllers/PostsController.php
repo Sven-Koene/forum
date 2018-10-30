@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+//use Illuminate\Support\Facades\Storage;
 use App\Post;
 
 class PostsController extends Controller
@@ -15,7 +15,7 @@ class PostsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'search']]);
     }
 
     /**
@@ -172,5 +172,13 @@ class PostsController extends Controller
         
         $post->delete();
         return redirect('/posts')->with('success', 'Post Removed');
+    }
+
+    public function search(Request $request){
+        $search = $request->input('search');
+        
+        $posts = Post::where('title', 'like', "%$search%")->orWhere('body', 'like', "%$search%")->get();
+
+        return view('posts.search')->with('posts', $posts);
     }
 }
