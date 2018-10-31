@@ -50,7 +50,8 @@ class PostsController extends Controller
         $this->validate($request,[
             'title' => 'required',
             'body' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:1999',
+            'category' => 'required'
         ]);
 
         // Handle file upload
@@ -75,6 +76,7 @@ class PostsController extends Controller
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
         $post->cover_image = $fileNameToStore;
+        $post->category = $request->input('category');
         $post->save();
 
         return redirect('/posts')->with('success', 'Post Created');
@@ -121,7 +123,8 @@ class PostsController extends Controller
     {
         $this->validate($request,[
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'category' => 'required',
         ]);
 
                 // Handle file upload
@@ -145,6 +148,7 @@ class PostsController extends Controller
         if($request->hasFile('cover_image')){
             $post->cover_image = $fileNameToStore;
         }
+        $post->category = $request->input('category');
         $post->save();
 
         return redirect('/posts')->with('success', 'Post Updated');
@@ -176,9 +180,19 @@ class PostsController extends Controller
 
     public function search(Request $request){
         $search = $request->input('search');
-        
-        $posts = Post::where('title', 'like', "%$search%")->orWhere('body', 'like', "%$search%")->get();
+        $category = $request->input('category');
 
+        if($category !== "Alle categoriën"){
+            $posts = Post::where('title', 'like', "%$search%")
+                        ->orWhere('body', 'like', "%$search%")
+                        ->where('category', "$category")
+                        ->get();
+        }
+        else{
+            $posts = Post::where('title', 'like', "%$search%")
+                        ->orWhere('body', 'like', "%$search%")
+                        ->get();
+        }
         return view('posts.search')->with('posts', $posts);
     }
 }

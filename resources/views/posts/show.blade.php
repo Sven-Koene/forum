@@ -7,6 +7,11 @@
     <br>
     <br>
     <div>
+    <h5>Categorie</h5>
+        <p>{{$post->category}}</p>
+    </div>
+    <div>
+    <h5>Recept</h5>
         {!!$post->body!!}
     </div>
     <hr>
