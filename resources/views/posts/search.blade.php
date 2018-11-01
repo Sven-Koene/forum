@@ -4,22 +4,22 @@
 
 <form action="{{route('search')}}" method="GET" class="search-form">
 
-        <label for="search">Zoek op titel of recept:</label>
-        <br>
-        <input type="text" name="search" class="form control" id="search">
-        <br>
-        <br>
-        <div class="form-group">
-            <label for="sel1">Selecteer categorie:</label>
-            <select name="category" class="form-control" id="sel1">
-                <option>Alle categoriën</option>
-                <option>Zoet</option>
-                <option>Hartig</option>
-                <option>Taart</option>
-                <option>Gebak</option>
-                <option>Anders</option>
-            </select>
-        </div>
+    <label for="search">Zoek op titel of recept:</label>
+<br>
+    <input type="text" name="search" class="form control" id="search">
+<br>
+<br>
+    <div class="form-group">
+        <label for="sel1">Selecteer categorie:</label>
+        <select name="category" class="form-control" id="sel1">
+            <option>Alle categoriën</option>
+            <option>Zoet</option>
+            <option>Hartig</option>
+            <option>Taart</option>
+            <option>Gebak</option>
+            <option>Anders</option>
+        </select>
+    </div>
     <button class="" type="submit"> Zoek! </button>
 </form>
 <div class="search-container">

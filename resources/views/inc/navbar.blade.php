@@ -22,12 +22,12 @@
             <li class="nav-item">
               <a class="nav-link" href="/posts">Posts</a>
             </li>
-            <li class="nav-item active">
+            <!-- <li class="nav-item active">
                 <form action="{{route('search')}}" method="GET" class="search-form">
                 <i class="fa fa-search search-icon"></i>
                 <input type="text" name="search" class="search-box" placeholder="Zoek op naam of email">
                 </form>
-            </li>
+            </li> -->
           </ul>
 
           <!-- Right Side Of Navbar -->
