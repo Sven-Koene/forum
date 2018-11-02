@@ -12,8 +12,6 @@
 */
 
 Route::get('/', 'PagesController@index');
-Route::get('/page', 'PagesController@page');
-Route::get('/services', 'PagesController@services');
 
 Route::resource('posts', 'PostsController');
 Auth::routes();
@@ -22,3 +20,6 @@ Route::get('/dashboard', 'DashboardController@index');
 
 Route::get('/search', 'PostsController@search')->name('search');
 // Route::get('/posts/search', 'PostsController@search')->name('search');
+Route::get('/admin', 'AdminController@admin')    
+    ->middleware('is_admin')    
+    ->name('admin');

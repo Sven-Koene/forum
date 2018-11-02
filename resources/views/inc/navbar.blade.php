@@ -14,14 +14,17 @@
               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/page">Page</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/services">Services</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="/posts">Posts</a>
             </li>
+            @if(!Auth::guest())
+                @if(Auth::user()->isAdmin())
+                    <li class="nav-item active">
+                    <a class="nav-link" href="/admin">Admin <span class="sr-only">(current)</span></a>
+                    </li>
+                @endif
+            @endif
+
+
             <!-- <li class="nav-item active">
                 <form action="{{route('search')}}" method="GET" class="search-form">
                 <i class="fa fa-search search-icon"></i>

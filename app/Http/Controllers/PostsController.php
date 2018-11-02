@@ -186,12 +186,14 @@ class PostsController extends Controller
             $posts = Post::where('category', "$category")
                         ->get();
         }
-        else if($category !== "Alle categoriën"){
-            $posts = Post::where('title', 'like', "%$search%")
+
+        else if($category !== "Alle categoriën" && !empty($search)){
+            $posts = Post::where('category', "$category")
+                        ->where('title', 'like', "%$search%")
                         ->orWhere('body', 'like', "%$search%")
-                        ->where('category', "$category")
-                        ->get();
+                        ->get();       
         }
+
         else{
             $posts = Post::where('title', 'like', "%$search%")
                         ->orWhere('body', 'like', "%$search%")
