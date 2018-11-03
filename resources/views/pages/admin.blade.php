@@ -9,8 +9,9 @@
                 <!-- Default panel contents -->
                 <div class="card-header">Admin paneel om posts onzichtbaar te maken</div>
 
-        @if(count($posts) > 0)
-@foreach($posts as $post)
+<form action="{{action('PostsController@adminHide')}}", method="POST", enctype="multipart/form-data">
+    @if(count($posts) > 0)
+    @foreach($posts as $post)
     <div class="card">
         <div class="row">
             <div class="col-md-8 col-sm-8">
@@ -20,15 +21,18 @@
                 <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
                 <p>Categorie: {{$post->category}}</p>
                 <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
-        <label class="switch ">
-          <input type="checkbox" class="danger">
-          <span class="slider round"></span>
-        </label>
+                <label class="switch ">
+                {{ csrf_field() }}
+                    <input name="id" type="hidden" value="{{$post->id}}">
+                    <input name="hidden" type="checkbox" class="danger" <?php if($post->hidden == 1){ ?> checked <?php }?>>
+                    <span class="slider round"></span>
+                </label>
             </div>
         </div>
     </div>
-@endforeach
-            
+    @endforeach
+    <button class="" type="submit"> Save </button>
+</form>       
                 
                         
        

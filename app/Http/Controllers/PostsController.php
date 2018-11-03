@@ -23,8 +23,7 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         $posts = Post::orderBy('created_at','desc')->paginate(10);
         return view('posts.index')->with('posts', $posts);
     }
@@ -202,9 +201,31 @@ class PostsController extends Controller
         return view('posts.search')->with('posts', $posts);
     }
 
-    public function adminSwitch(Request $request){
+    public function adminSwitch(){
+        
         $posts = Post::get();
-
+        
         return view('pages.admin')->with('posts', $posts);   
+    }
+
+    public function adminHide(Request $request){
+        
+        $posts = Post::get();
+    
+        foreach($posts as $post){
+            $hidden = $request->input('hidden');
+            $id = $request->input('id');
+
+            $post = Post::find($id);
+            if($hidden == "on"){
+                $post->hidden = 1;
+            }
+            
+            else{
+                $post->hidden = 0;
+            }
+        }
+        $post->save();
+        return redirect('/admin')->with('success', 'Post Updated');
     }
 }

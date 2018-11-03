@@ -20,8 +20,10 @@ Route::get('/dashboard', 'DashboardController@index');
 
 Route::get('/search', 'PostsController@search')->name('search');
 
-Route::get('/admin', 'AdminController@admin')    
+Route::get('/admin', 'AdminController@admin')
     ->middleware('is_admin')    
     ->name('admin');
 
 Route::get('/admin', 'PostsController@adminSwitch');
+
+Route::post('/admin', ['uses'=>'PostsController@adminHide']);
