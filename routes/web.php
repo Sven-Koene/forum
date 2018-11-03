@@ -19,7 +19,9 @@ Auth::routes();
 Route::get('/dashboard', 'DashboardController@index');
 
 Route::get('/search', 'PostsController@search')->name('search');
-// Route::get('/posts/search', 'PostsController@search')->name('search');
+
 Route::get('/admin', 'AdminController@admin')    
     ->middleware('is_admin')    
     ->name('admin');
+
+Route::get('/admin', 'PostsController@adminSwitch');

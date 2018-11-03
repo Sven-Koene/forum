@@ -201,4 +201,10 @@ class PostsController extends Controller
         }
         return view('posts.search')->with('posts', $posts);
     }
+
+    public function adminSwitch(Request $request){
+        $posts = Post::get();
+
+        return view('pages.admin')->with('posts', $posts);   
+    }
 }

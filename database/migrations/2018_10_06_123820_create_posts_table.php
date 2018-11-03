@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->mediumText('body');
             $table->timestamps();
             $table->string('category');
+            $table->boolean('hidden')->default('0');
         });
     }
 

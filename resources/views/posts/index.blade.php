@@ -4,7 +4,6 @@
 
 
 <form action="{{route('search')}}" method="GET" class="search-form">
-<form action="{{route('search')}}" method="GET" class="search-form">
 
         <label for="search">Zoek op titel of recept:</label>
         <br>
