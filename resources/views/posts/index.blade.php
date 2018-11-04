@@ -24,7 +24,7 @@
     <button class="" type="submit"> Zoek! </button>
 </form>
 
-    <h1>Posts</h1>
+    <h1>Bak recepten!</h1>
     @if(count($posts) > 0)
         @foreach($posts as $post)
             @if($post->hidden == 0)
